@@ -1,187 +1,225 @@
 # Engineering Notes System Rule
 
-This workspace maintains a centralized engineering knowledge system called:
+This workspace maintains a centralized engineering knowledge system:
 
 engineering-notes/
 
-Its purpose is to store reusable engineering knowledge across all projects and eliminate duplication of technical understanding.
+Its purpose is to store **reusable engineering intelligence**, not project documentation.
+
+This system trains one skill:
+
+> “How engineers classify and reuse technical knowledge across systems.”
 
 ---
 
-# 1. System Layers (ONLY GLOBAL KNOWLEDGE)
+# 1. Core Mental Model (IMPORTANT)
 
-This system contains ONLY reusable engineering knowledge.
+Every piece of knowledge MUST be classified into one of these 4 layers:
 
-There is NO project-specific documentation layer.
+## 🧠 TOOL
+WHAT you use
 
-Everything stored here MUST be reusable across systems.
+- external libraries
+- services
+- frameworks
+- APIs
 
----
-
-## 🧠 Tools Layer
-
-All external tools, libraries, and services MUST be documented in:
-
-engineering-notes/tools/
-
-Includes:
-
-- reCAPTCHA v3
+Example:
+- reCAPTCHA
 - Express.js
 - Docker
-- Playwright
-- Nodemailer
-- Helmet
-- CORS
 - Nginx
 
-Each tool must define:
+---
 
-- Purpose
-- When to use
-- When NOT to use
-- Integration pattern
-- Security considerations
-- Example usage
+## ⚙️ PATTERN
+HOW you solve a problem
+
+- reusable solution logic
+- system behavior patterns
+- design strategies
+
+Example:
+- rate limiting strategy
+- file-based persistence
+- async queue processing
+- API integration flow
 
 ---
 
-## ⚙️ Infrastructure Layer
+## 🏗️ ARCHITECTURE
+HOW systems are structured
 
-All infrastructure and DevOps patterns MUST be stored in:
+- system-level design
+- scalability design
+- evolution of systems
 
-engineering-notes/infrastructure/
-
-Includes:
-
-- Nginx reverse proxy patterns
-- SSL setup (Certbot)
-- Docker deployment patterns
-- Load balancing strategies
-- Rate limiting at gateway level
-
-Rule:
-→ Must be environment-agnostic and reusable  
-→ No domain-specific configuration allowed  
+Example:
+- monolith vs microservices
+- event-driven systems
+- system scaling stages
 
 ---
 
-## 🧠 System Design Patterns Layer
+## 🔧 INFRASTRUCTURE
+HOW systems run in real world
 
-All reusable architectural patterns MUST be stored in:
+- deployment
+- networking
+- runtime environment
+- DevOps configuration patterns
 
+Example:
+- Nginx reverse proxy
+- Docker deployment
+- SSL setup
+- load balancing
+
+---
+
+# 2. Classification Rule (CRITICAL)
+
+When adding any knowledge, ALWAYS ask:
+
+1. Is it WHAT I USE? → TOOL
+2. Is it HOW I SOLVE IT (tool-agnostic)? → PATTERN
+3. Is it SYSTEM STRUCTURE? → ARCHITECTURE
+4. Is it DEPLOYMENT/RUNTIME? → INFRASTRUCTURE
+
+If unclear → default to PATTERN
+
+---
+
+# 3. Tools Layer
+
+Location:
+engineering-notes/tools/
+
+Rules:
+- defines external systems only
+- no system design logic inside tools
+- must include:
+  - purpose
+  - when to use
+  - when NOT to use
+  - integration pattern
+  - risks/security
+  - example usage
+
+---
+
+# 4. Patterns Layer
+
+Location:
 engineering-notes/patterns/
 
-Includes:
-
-- File-based storage (JSONL/CSV)
-- Queue-based processing pattern
-- External API integration pattern
-- PDF generation (HTML → PDF)
-- Rate limiting architecture pattern
-
-Rule:
-→ Must describe conceptual system behavior  
-→ NOT implementation for any specific application  
-
----
-
-# 2. Separation Rule (CRITICAL)
-
-Everything in engineering-notes MUST be:
-
-✔ Reusable  
-✔ Generic  
-✔ Independent of any project  
-✔ Abstracted from implementation details  
-
----
-
-# 3. Tool Documentation Rule
-
-Each tool entry MUST follow this structure:
-
-- What it is
-- Problem it solves
-- When to use it
-- When NOT to use it
-- Integration pattern
-- Security considerations
-- Example usage
-
----
-
-# 4. Infrastructure Rule
-
-Infrastructure entries MUST:
-
-- Be reusable templates
-- Avoid domain or project naming
-- Focus on patterns, not configs
-- Represent standard deployment strategies
-
----
-
-# 5. System Pattern Rule
-
-Patterns define HOW systems behave, not how a specific app works.
+Rules:
+- describes reusable solution logic
+- must NOT mention specific project names
+- must be abstract and transferable
+- should explain system behavior
 
 Examples:
-
-- Stateless API design
-- File-based persistence strategy
-- Async processing patterns
-- External service integration flow
+- async processing pattern
+- API gateway pattern
+- retry + fallback pattern
+- file-based persistence pattern
 
 ---
 
-# 6. AI Routing Rule
+# 5. Architecture Layer
+
+Location:
+engineering-notes/architecture/
+
+Rules:
+- describes system-level design only
+- focuses on scalability, structure, evolution
+- includes tradeoffs and decision logic
+
+Includes:
+- system evolution stages
+- distributed system design
+- scaling strategies
+- architecture comparisons
+
+---
+
+# 6. Infrastructure Layer
+
+Location:
+engineering-notes/infrastructure/
+
+Rules:
+- deployment and runtime only
+- must be environment-agnostic
+- must be reusable templates
+
+Includes:
+- Nginx
+- Docker
+- CI/CD pipelines
+- SSL setup
+- networking
+
+---
+
+# 7. Decision Map (IMPORTANT BRAIN LAYER)
+
+engineering-notes/architecture/decision-map.md
+
+This file defines:
+
+> WHY a tool/pattern/architecture is chosen
+
+It connects:
+- Tool → Pattern → Architecture → Infrastructure
+
+---
+
+# 8. AI Routing Rule
 
 When adding knowledge:
 
-IF it is a tool → tools/  
-IF it is infrastructure → infrastructure/  
-IF it is a system concept → patterns/  
+IF it is WHAT I USE → tools/
+IF it is HOW I SOLVE → patterns/
+IF it is SYSTEM STRUCTURE → architecture/
+IF it is DEPLOYMENT → infrastructure/
 
-If it is not reusable → DO NOT include it
+If it does not generalize → DO NOT store it
 
 ---
 
-# 7. Folder Structure
+# 9. Golden Rule
 
-```
+engineering-notes is NOT documentation.
+
+It is an **engineering reasoning system**.
+
+Its goal is:
+
+> To train consistent decision-making across all systems.
+
+---
+
+# 10. Folder Structure
+
 engineering-notes/
-│
+
 ├── tools/
-│   ├── backend/
-│   ├── devops/
-│   ├── security/
-│   ├── communication/
-│   └── documentation/
-│
 ├── patterns/
-│   ├── api-design/
-│   ├── data-storage/
-│   ├── async-processing/
-│   ├── security-patterns/
-│   └── deployment-patterns/
-│
 ├── architecture/
-│   ├── monolith/
-│   ├── microservices/
-│   ├── event-driven/
-│   └── system-design-principles.md
-│
-├── decision-map.md
+├── infrastructure/
 └── README.md
-```
 
 ---
 
-# 8. Golden Principle
+# 11. Final Principle (MOST IMPORTANT)
 
-engineering-notes is NOT a project documentation system.
+Do not think:
 
-It is a **universal engineering knowledge system**.
+❌ “Where do I store this?”
 
-Everything stored here must help solve problems across multiple systems.
+Think:
+
+✔ “What role does this play in a system?”

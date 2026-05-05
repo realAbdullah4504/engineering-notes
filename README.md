@@ -29,6 +29,29 @@ Centralized engineering knowledge system for reusable patterns, tools, and infra
 
 ---
 
+## 🧠 Engineering Mental Model
+
+**Tools → Patterns → Architecture**
+
+### Core Framework
+- **Tools** = WHAT you use (Redis, Docker, Express.js)
+- **Patterns** = HOW you solve problems (Session Management, Retry with Backoff)
+- **Architecture** = HOW everything is structured (Microservices, Event-Driven)
+
+### Classification Rules
+- **Tool**: Technology or service that can be installed/integrated → `tools/`
+- **Pattern**: Reusable logic or decision-making flow → `patterns/`
+- **Architecture**: System structure connecting multiple components → `architecture/`
+
+### Senior Workflow
+1. Design Architecture
+2. Choose Patterns  
+3. Select Tools
+
+*See [System Thinking](architecture/system-thinking.md) for complete mental model.*
+
+---
+
 ## 🚀 Quick Start
 
 1. **Find Tools**: Browse the [Tool Registry](tools/tool-registry.md) for available engineering tools
