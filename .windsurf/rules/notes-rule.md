@@ -147,7 +147,38 @@ If it is not reusable → DO NOT include it
 
 ---
 
-# 7. Golden Principle
+# 7. Folder Structure
+
+```
+engineering-notes/
+│
+├── tools/
+│   ├── backend/
+│   ├── devops/
+│   ├── security/
+│   ├── communication/
+│   └── documentation/
+│
+├── patterns/
+│   ├── api-design/
+│   ├── data-storage/
+│   ├── async-processing/
+│   ├── security-patterns/
+│   └── deployment-patterns/
+│
+├── architecture/
+│   ├── monolith/
+│   ├── microservices/
+│   ├── event-driven/
+│   └── system-design-principles.md
+│
+├── decision-map.md
+└── README.md
+```
+
+---
+
+# 8. Golden Principle
 
 engineering-notes is NOT a project documentation system.
 

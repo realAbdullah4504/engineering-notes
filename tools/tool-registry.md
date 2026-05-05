@@ -4,7 +4,59 @@ Central registry of all engineering tools, libraries, and services used across p
 
 ---
 
-## Meeting & Communication
+## 📁 Folder Structure
+
+Tools are organized by category:
+
+- **backend/** - Server-side frameworks and libraries
+- **devops/** - Deployment, testing, and operational tools  
+- **security/** - Security services and middleware
+- **communication/** - Collaboration and communication tools
+- **documentation/** - Documentation platforms and authoring tools
+
+---
+
+## Communication
+
+### Fireflies.ai
+**Purpose**: AI-powered meeting transcription and summarization
+**Category**: Communication automation
+**Use case**: Automatic meeting notes, action items, and insights
+**Integration**: API-based, connects to calendar platforms
+**Security**: SOC 2 compliant, encrypted storage
+**Pricing**: Per-user subscription model
+
+### Zoom AI Companion
+**Purpose**: Meeting insights and transcription
+**Category**: Video conferencing enhancement
+**Use case**: Real-time meeting summaries, action item extraction
+**Integration**: Native Zoom feature
+**Security**: Zoom's enterprise security framework
+**Pricing**: Included with Zoom business/enterprise plans
+
+---
+
+## Documentation
+
+### Mintlify
+**Purpose**: Public documentation platform
+**Category**: Documentation hosting
+**Use case**: Customer-facing docs, API references, guides
+**Integration**: Git-based workflow, markdown support
+**Security**: Custom domains, SSO available
+**Pricing**: Tiered based on usage and features
+
+### Markdown (Cursor)
+**Purpose**: Internal engineering documentation
+**Category**: Documentation authoring
+**Use case**: Technical specs, runbooks, architecture docs
+**Integration**: IDE-native, version control friendly
+**Security**: Local storage, git-based security
+**Pricing**: Included with Cursor IDE
+
+---
+
+## Backend
 
 ### Fireflies.ai
 **Purpose**: AI-powered meeting transcription and summarization
