@@ -1,3 +1,6 @@
+---
+trigger: always_on
+---
 # Pattern Documentation Rule
 
 ## Purpose

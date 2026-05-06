@@ -1,3 +1,6 @@
+---
+trigger: always_on
+---
 # Engineering Notes System Rule
 
 This workspace maintains a centralized engineering knowledge system:

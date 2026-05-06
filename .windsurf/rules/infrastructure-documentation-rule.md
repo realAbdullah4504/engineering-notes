@@ -1,3 +1,6 @@
+---
+trigger: always_on
+---
 # Infrastructure Documentation Rule
 
 ## Purpose

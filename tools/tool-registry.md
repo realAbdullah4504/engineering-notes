@@ -114,6 +114,14 @@ Tools are organized by category:
 **Security**: Built-in guards, decorators, validation
 **Pricing**: Open source (MIT license)
 
+### Celery
+**Purpose**: Distributed task queue for background processing
+**Category**: Task queue/async processing
+**Use case**: Background job processing, data pipelines, periodic tasks
+**Integration**: Python-based, Redis/RabbitMQ broker, Docker deployment
+**Security**: Broker authentication, task encryption, worker isolation
+**Pricing**: Open source (BSD license)
+
 ---
 
 ## Security
