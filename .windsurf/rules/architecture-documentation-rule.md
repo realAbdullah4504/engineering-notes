@@ -8,7 +8,7 @@ This rule defines the standard template and structure for documenting system arc
 
 ## Template Structure
 
-Every system architecture documentation MUST include the following sections in order:
+Every system architecture documentation SHOULD follow this structure, adapting sections based on system complexity and relevance.
 
 ```markdown
 # 🏗️ <System Name> - Architecture Document
@@ -53,28 +53,35 @@ Every system architecture documentation MUST include the following sections in o
 
 ## 4. High-Level Architecture
 
+**Diagram representing system components and interactions**
+
+(Example — adapt based on system)
+
 ```
 [Client]
 ↓
-[API Gateway / Backend]
+[API Layer]
 ↓
-[Services Layer]
+[Service Layer]
 ↓
-[Queue / Async Processing]
+[Optional: Queue / Async Processing]
 ↓
 [Workers]
 ↓
-[Database]
+[Database / External Services]
 ```
 
 - Describe each block briefly
 - Explain interaction flow
+- Adapt diagram to actual system components
 
 ---
 
 ## 5. Component Breakdown
 
-### 5.1 API Layer
+*Note: Include only relevant components based on system design.*
+
+### 5.1 API Layer (if applicable)
 - Responsibilities:
 - Endpoints:
 - Validation:
@@ -82,37 +89,58 @@ Every system architecture documentation MUST include the following sections in o
 
 ---
 
-### 5.2 Service Layer
+### 5.2 Service Layer (if applicable)
 - Business logic:
 - Orchestration:
 - Sync vs Async decisions:
 
 ---
 
-### 5.3 Queue / Messaging Layer
+### 5.3 Queue / Messaging Layer (if applicable)
 - Why queue is used:
 - Tool (Celery / Kafka / SQS etc):
 - Queue design (single / multiple / priority):
 
+**Decision Reference:**
+- See [001] Deployment Strategy
+- See [002] Broker Selection
+
 ---
 
-### 5.4 Worker Layer
+### 5.4 Worker Layer (if applicable)
 - Responsibilities:
 - Concurrency model:
 - Retry handling:
 
+**Decision Reference:**
+- See [003] Scaling Strategy
+
 ---
 
-### 5.5 Database Layer
+### 5.5 Database Layer (if applicable)
 - DB type (SQL / NoSQL):
 - Schema design:
 - Indexing strategy:
 - Scaling approach:
 
+**Decision Reference:**
+- See [004] Database Selection
+
+---
+
+### 5.6 [Other Components] (as needed)
+- Component type:
+- Responsibilities:
+- Integration patterns:
+
+**Decision Reference:**
+- See [XXX] Relevant Decision Number
+
 ---
 
 ## 6. Data Flow
 
+### Success Path
 **Step-by-step flow**
 
 1. User sends request
@@ -122,9 +150,32 @@ Every system architecture documentation MUST include the following sections in o
 5. Worker consumes
 6. Data stored / result returned
 
+### Failure Scenarios
+- **API fails** → return error, retry logic
+- **Queue fails** → retry / fallback mechanism
+- **Worker crashes** → retry / Dead Letter Queue
+- **Database fails** → retry / partial failure handling
+- **Network issues** → timeout / circuit breaker
+
 ---
 
-## 7. API Design
+## 7. Constraints
+
+*System constraints that influence architectural decisions*
+
+- **Team size:** (e.g., 2-5 engineers)
+- **Budget:** (e.g., <$500/month)
+- **Time to market:** (e.g., 8-week deadline)
+- **Tech familiarity:** (e.g., Python/JavaScript stack)
+- **Existing infrastructure:** (e.g., AWS, specific services)
+- **Compliance requirements:** (e.g., GDPR, HIPAA)
+- **Performance requirements:** (e.g., <100ms response time)
+
+*Why this is critical: Architecture is designed within real-world constraints, not in isolation.*
+
+---
+
+## 8. API Design
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -133,7 +184,7 @@ Every system architecture documentation MUST include the following sections in o
 
 ---
 
-## 8. Data Model
+## 9. Data Model
 
 ### Example Schema
 
@@ -147,17 +198,28 @@ Every system architecture documentation MUST include the following sections in o
 
 ---
 
-## 9. Scaling Strategy
+## 10. Scaling Strategy
 
-### Stage 1 (Simple)
+Describe system evolution across increasing scale levels.
+
+Example stages:
+- Stage 1 (Simple)
+- Stage 2 (Intermediate)
+- Stage 3 (Horizontal Scaling)
+
+Adapt stages based on system requirements.
+
+### Example Evolution
+
+#### Stage 1 (Simple)
 - Single server
 - No queue
 
-### Stage 2 (Intermediate)
+#### Stage 2 (Intermediate)
 - Add queue
 - Background workers
 
-### Stage 3 (Advanced - Horizontal Scaling)
+#### Stage 3 (Advanced - Horizontal Scaling)
 - Multiple workers
 - Load balancer
 - Auto-scaling
@@ -169,7 +231,7 @@ Every system architecture documentation MUST include the following sections in o
 
 ---
 
-## 10. Reliability & Fault Tolerance
+## 11. Reliability & Fault Tolerance
 
 - Retry mechanisms:
 - Dead Letter Queue (DLQ):
@@ -178,7 +240,7 @@ Every system architecture documentation MUST include the following sections in o
 
 ---
 
-## 11. Observability
+## 12. Observability
 
 - Logging:
 - Metrics:
@@ -187,7 +249,7 @@ Every system architecture documentation MUST include the following sections in o
 
 ---
 
-## 12. Deployment Architecture
+## 13. Deployment Architecture
 
 ### Local
 - Docker / docker-compose
@@ -199,7 +261,7 @@ Every system architecture documentation MUST include the following sections in o
 
 ---
 
-## 13. Security Considerations
+## 14. Security Considerations
 
 - Authentication / Authorization
 - Rate limiting
@@ -208,7 +270,7 @@ Every system architecture documentation MUST include the following sections in o
 
 ---
 
-## 14. Cost Considerations
+## 15. Cost Considerations
 
 - Compute cost
 - Queue cost
@@ -217,7 +279,7 @@ Every system architecture documentation MUST include the following sections in o
 
 ---
 
-## 15. Trade-offs
+## 16. Trade-offs
 
 | Decision | Why | Trade-off |
 |----------|-----|-----------|
@@ -226,7 +288,7 @@ Every system architecture documentation MUST include the following sections in o
 
 ---
 
-## 16. Future Improvements
+## 17. Future Improvements
 
 - Feature improvements
 - Scaling upgrades
@@ -234,7 +296,7 @@ Every system architecture documentation MUST include the following sections in o
 
 ---
 
-## 17. Postmortem (Very Important)
+## 18. Postmortem (Very Important)
 
 ### What Works
 - Points
@@ -247,6 +309,18 @@ Every system architecture documentation MUST include the following sections in o
 
 ### When to Move to Next Stage
 - Trigger conditions
+
+---
+
+## 19. Related Decisions
+
+*Reference to decision documentation that explains architectural choices*
+
+- [001]: Deployment Strategy (ECS Fargate)
+- [002]: Queue/Broker Selection
+- [003]: Scaling Strategy
+
+*Format: [decision-number]: Brief description of decision*
 ```
 
 ## Section Requirements
@@ -289,18 +363,21 @@ Every system architecture documentation MUST include the following sections in o
 ## Enforcement
 
 ### When Creating New Architecture Docs
-1. Use this template exactly as provided
+1. Use this template as a flexible framework
 2. Complete all mandatory sections
 3. Include context-dependent sections only if relevant
-4. Ensure scaling strategy includes at least 3 stages
-5. Complete the postmortem section honestly
+4. Adapt component breakdown to actual system architecture
+5. Ensure scaling strategy reflects realistic evolution stages
+6. Complete the postmortem section honestly
 
 ### When Updating Existing Architecture Docs
 1. Map existing content to this template
 2. Fill in missing mandatory sections
-3. Add scaling stages if missing
-4. Include honest postmortem assessment
-5. Update trade-offs table with real decisions
+3. Adapt component sections to actual system design
+4. Add scaling stages if missing
+5. Include honest postmortem assessment
+6. Update trade-offs table with real decisions
+7. Add related decisions section to link with decision docs
 
 ## File Organization
 
