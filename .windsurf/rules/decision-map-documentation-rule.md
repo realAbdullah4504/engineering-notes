@@ -1,3 +1,6 @@
+---
+trigger: always_on
+---
 # Decision Map Documentation Rule
 
 ## Purpose
